@@ -1,0 +1,183 @@
+.portals-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.portals-btn {
+    background: #228B22;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    /* Use Elementor's global small text typography */
+    font-family: var(--e-global-typography-small-font-family);
+    font-size: var(--e-global-typography-small-font-size);
+    font-weight: var(--e-global-typography-small-font-weight);
+    line-height: var(--e-global-typography-small-line-height);
+    letter-spacing: var(--e-global-typography-small-letter-spacing);
+    text-transform: var(--e-global-typography-small-text-transform);
+    font-style: var(--e-global-typography-small-font-style);
+    text-decoration: var(--e-global-typography-small-text-decoration);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(34, 139, 34, 0.2);
+}
+.portals-btn:hover {
+    background: #1e7a1e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(34, 139, 34, 0.3);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.portals-btn.active .arrow {
+    transform: rotate(180deg);
+}
+
+.portals-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    min-width: 280px;
+    z-index: 9999;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.portals-dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portal-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #f5f5f5;
+    transition: all 0.3s ease;
+    gap: 12px;
+}
+
+.portal-item:last-child {
+    border-bottom: none;
+}
+
+.portal-item:hover {
+    background: #f8f9fa;
+    color: #228B22;
+    padding-left: 24px;
+}
+
+.portal-icon {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+.portal-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.portal-text small {
+    font-size: 12px;
+    color: #666;
+    display: block;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .portals-dropdown-container {
+        margin-left: 15px;
+    }
+    
+    .portals-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .portals-dropdown-menu {
+        right: 0;
+        min-width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portals-dropdown-container {
+        
+    }
+    
+    .portals-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .portals-dropdown-menu {
+        right: -20px;
+        min-width: 240px;
+    }
+    
+    .portal-item {
+        padding: 12px 16px;
+    }
+    
+    .portal-text strong {
+        font-size: 13px;
+    }
+    
+    .portal-text small {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portals-dropdown-menu {
+        right: 0;
+        left: auto;
+        min-width: 220px;
+    }
+}
+
+/* Animation for smooth dropdown */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portals-dropdown-menu.show {
+    animation: fadeInDown 0.3s ease;
+}
+</style>
+
+<script>
+function togglePortalsDropdown() {
+    const dropdown = document.getElementById('portalsDropdownMenu');
+    const button = document.getElementById('portalsButton');
+    
+    // Toggle dropdown
+    dropdown.classList.toggle('show');
+    button.classList.toggle('active');
